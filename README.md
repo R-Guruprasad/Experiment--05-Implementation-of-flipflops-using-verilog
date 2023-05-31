@@ -102,39 +102,111 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+1.Using Quartus construct sr flip flop.
 
+2.Repeat same steps to construct JK,D,T flipflops.
 
+3.Find Rtl logic and timing diagram for all flipflops.
 
-### PROGRAM 
+4.End the program.
+### PROGRAM  1
+```
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: R Guruprasad 
+RegisterNumber:  212222240033
 */
+module flipflop(s,r,clk,q,qbar);
+input s,r,clk;
+output reg q;
+output reg qbar;
+initial q=0;
+initial qbar=1;
+always @(posedge clk)
+begin 
+	q = s |(~r &q);
+	qbar=(~s & ~q)| r;
+end
+endmodule
+```
+### RTL LOGIC FOR SR FLIP FLOPS 
+![](./srfliprtl.png)
+### TIMING DIGRAMS FOR SR FLIP FLOPS 
+![](./srwave.png)
+### PROGRAM  2
+```
+/*
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
+Developed by: R Guruprasad 
+RegisterNumber:  212222240033
+*/
+module flipflop2(j,k,clk,q,qbar);
+input j,k,clk;
+output q,qbar;
+reg q,qbar;
+always @ (posedge clk)
+begin 
+	q <= (j & ~q)|(~k & q);
+	qbar <= ~q;
+end
+endmodule
+
+```
+### RTL LOGIC FOR JK FLIP FLOPS 
+![](./jkrtl.png)
+### TIMING DIGRAMS FOR JK FLIP FLOPS 
+![](./jkwave.png)
+
+### PROGRAM  3
+```
+/*
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
+Developed by: R Guruprasad 
+RegisterNumber:  212222240033
+*/
+module flipflop2(t,clk,q,qbar);
+input t,clk;
+output q,qbar;
+reg q,qbar;
+always @ (posedge clk)
+begin 
+	q <= (t & ~q)|(~t & q);
+	qbar <= ~q;
+end
+endmodule
 
 
-
-
-
-
-### RTL LOGIC FOR FLIPFLOPS 
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
+```
+### RTL LOGIC FOR T FLIP FLOPS 
+![](./trtl.png)
+### TIMING DIGRAMS FOR T FLIP FLOPS 
+![](./twave2.png)
+### PROGRAM 4
+```
+/*
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
+Developed by: R Guruprasad 
+RegisterNumber:  212222240033
+*/
+D FLIPFLOPS CODE:
+module flipflops(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
+```
+### RTL LOGIC FOR D FLIP FLOPS 
+![](./drtl.png)
+### TIMING DIGRAMS FOR D FLIP FLOPS 
+![](./dwave.png)
 
 ### RESULTS 
+Implementation-of-flipflops-using-verilog successfully completed.       
+
